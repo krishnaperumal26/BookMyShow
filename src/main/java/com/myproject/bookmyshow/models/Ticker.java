@@ -1,9 +1,6 @@
 package com.myproject.bookmyshow.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,5 +21,6 @@ public class Ticker extends BaseModel{
     private Show show;
     @OneToMany
     private List<Payment> payments;
-    private TicketStatus ticketStatus;
+    @Enumerated(EnumType.ORDINAL)
+    private TicketStatus status;
 }

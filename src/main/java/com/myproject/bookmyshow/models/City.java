@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 @Entity
 public class City extends BaseModel{
-    @OneToMany
+    @OneToMany(mappedBy = "city") //put name of the attribute in the other class, that is represent the relationship
     private List<Theater> theaters;
     private String name;
 

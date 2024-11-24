@@ -1,7 +1,6 @@
 package com.myproject.bookmyshow.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +10,8 @@ import java.util.List;
 @Setter
 @Entity
 public class Movie extends BaseModel{
-    @OneToMany
-    private List<Language> languages;
+
+    @Enumerated(EnumType.STRING)
+    @ElementCollection
+    private List<Language> language;
 }
