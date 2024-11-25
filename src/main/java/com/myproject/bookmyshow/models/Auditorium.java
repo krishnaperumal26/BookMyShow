@@ -11,7 +11,7 @@ import java.util.List;
 public class Auditorium extends BaseModel{
     private String name;
     @OneToMany
-    private List<Seat> seats;
+    private List<Chair> seats;
 
     @Enumerated(EnumType.ORDINAL)
     @ElementCollection

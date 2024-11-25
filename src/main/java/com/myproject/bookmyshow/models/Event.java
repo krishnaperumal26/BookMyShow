@@ -9,7 +9,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class Show extends BaseModel{
+public class Event extends BaseModel{
     @ManyToOne
     private Auditorium auditorium;
     private Date startTime;

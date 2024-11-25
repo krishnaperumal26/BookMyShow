@@ -14,11 +14,11 @@ public class Ticker extends BaseModel{
     private int amount;
     private Date timeOfBooking;
     @ManyToMany
-    private List<Seat> seats;
+    private List<Chair> seats;
     @ManyToOne
     private User bookedBy;
     @ManyToOne
-    private Show show;
+    private Event event;
     @OneToMany
     private List<Payment> payments;
     @Enumerated(EnumType.ORDINAL)

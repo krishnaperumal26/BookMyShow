@@ -8,9 +8,9 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class ShowSeat extends BaseModel{
     @ManyToOne
-    private Show show;
+    private Event event;
     @ManyToOne
-    private Seat seat;
+    private Chair seat;
     @Enumerated(EnumType.ORDINAL)
     private ShowSeatStatus seatStatus;
 }

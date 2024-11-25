@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class ShowSeatType extends BaseModel{
     @ManyToOne
-    private Show show;
+    private Event event;
     @ManyToOne
     private SeatType seatType;
     private int price;
