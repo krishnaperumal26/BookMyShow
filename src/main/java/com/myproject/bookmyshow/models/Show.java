@@ -8,8 +8,8 @@ import java.util.Date;
 
 @Getter
 @Setter
-@Entity
-public class Event extends BaseModel{
+@Entity(name = "Showz")
+public class Show extends BaseModel{
     @ManyToOne
     private Auditorium auditorium;
     private Date startTime;

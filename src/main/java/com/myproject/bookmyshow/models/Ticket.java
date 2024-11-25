@@ -10,15 +10,15 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Ticker extends BaseModel{
+public class Ticket extends BaseModel{
     private int amount;
     private Date timeOfBooking;
     @ManyToMany
-    private List<Chair> seats;
+    private List<Seat> seats;
     @ManyToOne
     private User bookedBy;
     @ManyToOne
-    private Event event;
+    private Show event;
     @OneToMany
     private List<Payment> payments;
     @Enumerated(EnumType.ORDINAL)
