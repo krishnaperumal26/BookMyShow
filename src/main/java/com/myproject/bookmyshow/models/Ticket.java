@@ -18,7 +18,7 @@ public class Ticket extends BaseModel{
     @ManyToOne
     private User bookedBy;
     @ManyToOne
-    private Show event;
+    private Show show;
     @OneToMany
     private List<Payment> payments;
     @Enumerated(EnumType.ORDINAL)
