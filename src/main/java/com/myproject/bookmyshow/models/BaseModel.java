@@ -1,6 +1,8 @@
 package com.myproject.bookmyshow.models;
 
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -9,9 +11,10 @@ import lombok.Setter;
 import java.util.Date;
 @Getter
 @Setter
-@MappedSuperclass //Don't create separate table instead put its attribute to every child class
+@MappedSuperclass
 public class BaseModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date createdDate;
     private Date lastModifiedAt;

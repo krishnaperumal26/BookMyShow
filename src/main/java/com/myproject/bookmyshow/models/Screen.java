@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Auditorium extends BaseModel{
+public class Screen extends BaseModel{
     private String name;
     @OneToMany
     private List<Seat> seats;
@@ -16,10 +16,12 @@ public class Auditorium extends BaseModel{
     @Enumerated(EnumType.ORDINAL)
     @ElementCollection
     private List<Feature> features;
-//    @OneToMany
-//    private List<Show> shows; // Shows AVAILABLE FOR BOOKING
-//    @OneToOne
-//    private Show show; //current running show
-
-
 }
+
+
+/*
+1           M
+Screen --- Seats 1:M
+1           1
+
+ */

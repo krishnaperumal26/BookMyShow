@@ -1,21 +1,19 @@
 package com.myproject.bookmyshow.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "Seats")//To specify the table name, value can be given inside the Entity
+@Entity(name = "Seat")
 public class Seat extends BaseModel{
     private String seatNumber;
-    @Column(name = "rowz")
-    private int row;
-    @Column(name="colz")
-    private int col;
-    @ManyToOne
+    @Column(name = "rowNum")
+    private int rowNum;
+    @Column(name="colNum")
+    private int colNum;
+    @Enumerated(EnumType.ORDINAL)
     private SeatType seatType;
 }
 

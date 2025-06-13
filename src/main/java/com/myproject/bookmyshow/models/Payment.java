@@ -11,15 +11,13 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class Payment extends BaseModel{
+public class Payment extends BaseModel {
     private int amount;
     @Enumerated(EnumType.ORDINAL)
     private PaymentProvider paymentProvider;
-    private Date time;
-    private String refId;
+    @Enumerated(EnumType.ORDINAL)
+    private PaymentMode paymentMode;
+    private String referenceNumber;
     @Enumerated(EnumType.ORDINAL)
     private PaymentStatus paymentStatus;
-    @Enumerated(EnumType.ORDINAL)
-    private PaymentType paymentType;
-
 }

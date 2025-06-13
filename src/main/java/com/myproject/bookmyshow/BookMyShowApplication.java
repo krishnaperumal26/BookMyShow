@@ -1,11 +1,19 @@
 package com.myproject.bookmyshow;
 
-import com.myproject.bookmyshow.models.City;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class BookMyShowApplication {
+
+    static {
+        try {
+            System.out.println("BookMyShow Application Started");
+            // Add any other initialization code here
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(BookMyShowApplication.class, args);
