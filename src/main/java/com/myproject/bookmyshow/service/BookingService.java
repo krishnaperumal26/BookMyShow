@@ -4,6 +4,7 @@ import com.myproject.bookmyshow.exceptions.SeatNotAvailableException;
 import com.myproject.bookmyshow.exceptions.ShowNotFoundException;
 import com.myproject.bookmyshow.exceptions.UserNotFoundException;
 import com.myproject.bookmyshow.models.*;
+import com.myproject.bookmyshow.repositories.BookingRespository;
 import com.myproject.bookmyshow.repositories.ShowRepository;
 import com.myproject.bookmyshow.repositories.ShowSeatRepository;
 import com.myproject.bookmyshow.repositories.UserRepository;
@@ -19,17 +20,23 @@ public class BookingService {
     UserRepository userRepository;
     ShowRepository showRepository;
     ShowSeatRepository showSeatRepository;
-    public BookingService(UserRepository userRepository, ShowRepository showRepository, ShowSeatRepository showSeatRepository) {
+    PriceCalculator priceCalculator;
+    BookingRespository bookingRespository;
+    public BookingService(UserRepository userRepository, ShowRepository showRepository,
+                          ShowSeatRepository showSeatRepository, PriceCalculator priceCalculator,
+                          BookingRespository bookingRespository) {
         this.userRepository = userRepository;
         this.showRepository = showRepository;
         this.showSeatRepository = showSeatRepository;
+        this.priceCalculator = priceCalculator;
+        this.bookingRespository = bookingRespository;
     }
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Booking createBooking(Long userId, List<Long> showSeatIds, Long showId) throws UserNotFoundException, ShowNotFoundException, SeatNotAvailableException {
          /*
         1. Get the user from the given userId
         2. Get the show from the given showId
-        3. Get the seats from the given seatIds
+        3. Get the ShowSeats from the given seatIds
         4. Check if the seats are available or not
         5. If not, throw an exception
         6. If available, mark the status as seats as Blocked
@@ -82,8 +89,7 @@ public class BookingService {
         booking.setShow(show);
         booking.setPayments(new ArrayList<>());
         booking.setShowSeats(updatedShowSeat);
-
-
-        return null;
+        booking.setAmount(priceCalculator.calculatePrice(show, showSeats));
+        return bookingRespository.save(booking);
     }
 }

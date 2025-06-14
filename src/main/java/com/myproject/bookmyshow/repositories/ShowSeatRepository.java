@@ -12,7 +12,7 @@ import java.util.List;
 public interface ShowSeatRepository extends JpaRepository<ShowSeat, Long>
 {
     //("select '*' from show_seats where Id IN (C10,C11,C12)")
-    List<ShowSeat> findAllBySeatInAndShow(List<Long> showsSeatId);
+    List<ShowSeat> findAllById(Iterable<Long> showSeatIds);
 
     ShowSeat save(ShowSeat showSeat);
 }
